@@ -12,7 +12,14 @@
   </head>
   <body>
     <div class="content">
-      <h1>{{result}}</h1>
+      {% if result == 0 %}
+      <p>Anda Covid</p>
+      {% elif result == 1 %}
+      <p>Anda Tidak Covid</p>
+      {% else %}
+      <p>Error!!</p>
+      {% endif %}
+      
     </div>
     <div class="btn">
         <a href="{% url 'home' %}"><button class="submit" style="vertical-align:middle"><span>Kembali</span></button></a>

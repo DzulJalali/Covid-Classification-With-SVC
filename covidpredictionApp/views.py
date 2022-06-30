@@ -17,7 +17,7 @@ import numpy as np
 def home(request):
     return render(request, 'home.html', {})
 
-def result(request):
+def getPredict(demam, kecapean, batuk, sufas, sateng, tagel, sakit, hiter, pilek, diare, timeng):
     dataset_baru = pd.read_csv(r'E:\Applications\Jupyter Notebook\SistemPakar\tubes\dataset_covid_classification.csv')
 
     dataset_baru = dataset_baru.sample(frac=1, random_state=12)
@@ -52,13 +52,25 @@ def result(request):
         score = np.mean(cross_val_score(model ,x_train_pca, y_train_under,cv=5))
         scores.append(score)
 
-    # knn.fit(x_train_pca, y_train_under)
-    # tree.fit(x_train_pca, y_train_under)
-    # randfor.fit(x_train_pca, y_train_under)
     svc.fit(x_train_pca, y_train_under)
 
+    pred = model.predict(np.array([demam, kecapean, batuk, sufas, sateng, tagel, sakit, hiter, pilek, diare, timeng]).reshape(1,-1))
+    # pred = (pred)
+
+    print(pred[0])
+    
+    if pred == 'Positive':
+        return 0
+    elif pred == 'Negative':
+        return 1
+    else :
+        return 'error!'
+    
+
+
+def result(request):
     CHECKBOX_MAPPING = {'on':True,
-                    'off':False,}
+                'off':False,}
 
     #variable inputan
     demam = CHECKBOX_MAPPING.get(request.GET.get('demam', False))
@@ -73,14 +85,5 @@ def result(request):
     diare = CHECKBOX_MAPPING.get(request.GET.get('diare', False))
     timeng = CHECKBOX_MAPPING.get(request.GET.get('timeng', False))
 
-    pred = model.predict(np.array([demam, kecapean, batuk, sufas, sateng, tagel, sakit, hiter, pilek, diare, timeng]).reshape(1,-1))
-    pred = (pred)
-
-    result = 'Anda '+ str(pred[0]) + ' Covid 19'
-    
-    svc.score(x_test_pca, y_test)
-
-    y_pred = svc.predict(x_test_pca)
-    score = round(accuracy_score(y_pred, y_test),3)
-
+    result = getPredict(demam, kecapean, batuk, sufas, sateng, tagel, sakit, hiter, pilek, diare, timeng)
     return render(request, 'result.html', {"result":result})
