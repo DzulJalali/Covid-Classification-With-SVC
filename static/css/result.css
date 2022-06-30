@@ -1,61 +1,84 @@
-.content {
-  max-width: 500px;
-  margin: auto;
-  text-align: center;
-  margin-top: 80px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-.submit {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #fff;
-    border: none;
-    color: #333;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 20px;
-    width: 175px;
-    transition: all 0.3s;
-    cursor: pointer;
-    margin: 10px;
-  }
-  
-  .submit span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.3s;
-  }
-  
-  .submit span:after {
-    content: '\00AB';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    left: -20px;
-    transition: 0.3s;
-  }
-  
-  .submit:hover span {
-    padding-left: 25px;
-  }
-  
-  .submit:hover span:after {
-    opacity: 1;
-    left: 0;
-  }
-  
-  .submit:hover
-  {
-      background: #3b5999;
-      color: #fff;
-  }
-  
-  .btn
-  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #333;
+}
 
+.container_result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh; */
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 20rem;
+  padding: 60px;
+  width: 600px;
+  height: px;
+  background: #fff;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+.container_result p {
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.container_result .back {
+  display: inline-block;
+  background: rgb(97, 96, 96);
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  width: 175px;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin: 10px;
+  font-weight: 700;
+}
+.back span {
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.back span:after {
+  content: '\00AB';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.3s;
+}
+
+.back:hover span {
+  padding-left: 25px;
+}
+
+.back:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+.back:hover
+{
+    background: #3b5999;
+    color: #fff;
+}

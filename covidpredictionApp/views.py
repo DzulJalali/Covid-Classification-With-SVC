@@ -18,7 +18,7 @@ def home(request):
     return render(request, 'home.html', {})
 
 def getPredict(demam, kecapean, batuk, sufas, sateng, tagel, sakit, hiter, pilek, diare, timeng):
-    dataset_baru = pd.read_csv(r'E:\Applications\Jupyter Notebook\SistemPakar\tubes\dataset_covid_classification.csv')
+    dataset_baru = pd.read_csv(r'E:\Kuliah\Semester 6\Sistem Pakar\TB\dataset_covid_classification.csv')
 
     dataset_baru = dataset_baru.sample(frac=1, random_state=12)
     dataset_baru = dataset_baru.iloc[0:5000, :]
