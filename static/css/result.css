@@ -1,0 +1,61 @@
+.content {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.submit {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #fff;
+    border: none;
+    color: #333;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+    width: 175px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .submit span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+  }
+  
+  .submit span:after {
+    content: '\00AB';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: -20px;
+    transition: 0.3s;
+  }
+  
+  .submit:hover span {
+    padding-left: 25px;
+  }
+  
+  .submit:hover span:after {
+    opacity: 1;
+    left: 0;
+  }
+  
+  .submit:hover
+  {
+      background: #3b5999;
+      color: #fff;
+  }
+  
+  .btn
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+

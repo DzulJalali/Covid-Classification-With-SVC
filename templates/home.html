@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Covid Classification</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">Choose the symptoms</div>
+      <form action="result">
+        <div class="container">
+          <label class="option_item">
+            <input type="hidden" name="demam" value="off"/>
+            <input type="checkbox" class="checkbox" name="demam"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Demam</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="capek" value="off"/>
+            <input type="checkbox" class="checkbox" name="capek"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Kecapean</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="baker" value="off"/>
+            <input type="checkbox" class="checkbox" name="baker"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Batuk Kering</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="sufas" value="off"/>
+            <input type="checkbox" class="checkbox" name="sufas"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Susah Bernafas</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="sateng" value="off"/>
+            <input type="checkbox" class="checkbox" name="sateng"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">sakit Tenggorokan</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="tagel" value="off"/>
+            <input type="checkbox" class="checkbox" name="tagel"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Tanpa Gejala</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="sakit" value="off"/>
+            <input type="checkbox" class="checkbox" name="sakit"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Sakit</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="hiter" value="off"/>
+            <input type="checkbox" class="checkbox" name="hiter"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Hidung Tersumbat</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="pilek" value="off"/>
+            <input type="checkbox" class="checkbox" name="pilek"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Pilek</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="diare" value="off"/>
+            <input type="checkbox" class="checkbox" name="diare"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Diare</div>
+            </div>
+          </label>
+          <label class="option_item">
+            <input type="hidden" name="timeng" value="off"/>
+            <input type="checkbox" class="checkbox" name="timeng"/>
+            <div class="option_inner facebook">
+              <div class="tickmark"></div>
+              <div class="icon"><i class="fas fa-head-side-cough"></i></div>
+              <div class="name">Tidak Mengalami</div>
+            </div>
+          </label>
+          <div class="btn">
+            <a href="{% url 'result' %}"><button class="submit" style="vertical-align:middle"><span>Validasi</span></button></a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <br><br>
+  </body>
+</html>
