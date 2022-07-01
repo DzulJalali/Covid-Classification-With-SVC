@@ -16,7 +16,7 @@ def home(request):
     return render(request, 'home.html', {})
 
 def getPredict(demam, kecapean, batuk, sufas, sateng, tagel, nyeri, hiter, pilek, diare, timeng):
-    dataset_baru = pd.read_csv(r'E:\Applications\Jupyter Notebook\SistemPakar\tubes\dataset_covid_classification.csv')
+    dataset_baru = pd.read_csv(r'E:\Applications\SEMESTER 6\Tubes Sistem Pakar\covid19Prediction\dataset\dataset_covid_classification.csv')
 
     dataset_baru = dataset_baru.sample(frac=1, random_state=12)
     dataset_baru = dataset_baru.iloc[0:5000, :]
@@ -24,16 +24,16 @@ def getPredict(demam, kecapean, batuk, sufas, sateng, tagel, nyeri, hiter, pilek
     dataset_baru['labels'] = dataset_baru['labels'].replace([0],'Positive')
     dataset_baru['labels'] = dataset_baru['labels'].replace([1],'Negative')
 
-    x = dataset_baru.iloc[:, :11]
+    x = dataset_baru.iloc[:,0:11]
     y = dataset_baru['labels']
 
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=10)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=20)
     undersample = RandomUnderSampler(sampling_strategy='majority')
     x_train_under, y_train_under = undersample.fit_resample(x_train, y_train)
 
-    # pca = PCA(n_components=11)
-    # pca_attributes = pca.fit_transform(x_train_under)
-    # pca.explained_variance_ratio_
+    pca = PCA(n_components=11)
+    pca_attributes = pca.fit_transform(x_train_under)
+    pca.explained_variance_ratio_
 
     pca = PCA(n_components = 11)
     x_train_pca = pca.fit_transform(x_train_under)
