@@ -1,12 +1,5 @@
 from django.shortcuts import render
-import pandas as pd
-from sklearn import *
-from sklearn.model_selection import train_test_split
-from imblearn.under_sampling import RandomUnderSampler
-from sklearn.decomposition import PCA
-from sklearn.model_selection import cross_val_score
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score
+import pickle
 import numpy as np
 
 
@@ -15,47 +8,19 @@ import numpy as np
 def home(request):
     return render(request, 'home.html', {})
 
-def getPredict(demam, kecapean, batuk, sufas, sateng, tagel, nyeri, hiter, pilek, diare, timeng):
-    dataset_baru = pd.read_csv(r'E:\Applications\SEMESTER 6\Tubes Sistem Pakar\covid19Prediction\dataset\dataset_covid_classification.csv')
-
-    dataset_baru = dataset_baru.sample(frac=1, random_state=12)
-    dataset_baru = dataset_baru.iloc[0:5000, :]
-
-    dataset_baru['labels'] = dataset_baru['labels'].replace([0],'Positive')
-    dataset_baru['labels'] = dataset_baru['labels'].replace([1],'Negative')
-
-    x = dataset_baru.iloc[:,0:11]
-    y = dataset_baru['labels']
-
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=20)
-    undersample = RandomUnderSampler(sampling_strategy='majority')
-    x_train_under, y_train_under = undersample.fit_resample(x_train, y_train)
-
-    pca = PCA(n_components=11)
-    pca_attributes = pca.fit_transform(x_train_under)
-    pca.explained_variance_ratio_
-
-    pca = PCA(n_components = 11)
-    x_train_pca = pca.fit_transform(x_train_under)
-    x_test_pca = pca.fit_transform(x_test)
-
-    svc = SVC()
-    models = [svc]
-
-    scores = []
-    for model in models:
-        score = np.mean(cross_val_score(model ,x_train_pca, y_train_under,cv=5))
-        scores.append(score)
-
-    svc.fit(x_train_pca, y_train_under)
-
-    pred = model.predict(np.array([demam, kecapean, batuk, sufas, sateng, tagel, nyeri, hiter, pilek, diare, timeng]).reshape(1, -1))
-
-    print(pred[0])
+def getPredict(susahnafas, demam, baker, sateng, hipertensi, lelah, jjln, contact, kumpul, public, keluarga):
+    # dataset_baru = pd.read_csv(r'E:\Applications\Jupyter Notebook\SistemPakar\tubes\dataset_covid_classification.csv')
     
-    if pred == 'Positive':
+    model = pickle.load(open(r'E:\Applications\Jupyter Notebook\SistemPakar\TB\covid_dataset.sav', "rb"))
+    scaled = pickle.load(open(r'E:\Applications\Jupyter Notebook\SistemPakar\TB\scaler.sav', "rb"))
+    prediction = model.predict(scaled.transform([
+        [susahnafas, demam, baker, sateng, hipertensi, lelah, jjln, contact, kumpul, public, keluarga]
+    ]))
+    
+    
+    if prediction == 1:
         return 0
-    elif pred == 'Negative':
+    elif prediction == 0:
         return 1
     else :
         return 'error!'
@@ -67,18 +32,18 @@ def result(request):
                 'off':False,}
 
     #variable inputan
+    susahnafas = CHECKBOX_MAPPING.get(request.GET.get('susahnafas', False))
     demam = CHECKBOX_MAPPING.get(request.GET.get('demam', False))
-    kecapean = CHECKBOX_MAPPING.get(request.GET.get('capek', False))
-    batuk = CHECKBOX_MAPPING.get(request.GET.get('baker', False))
-    sufas = CHECKBOX_MAPPING.get(request.GET.get('sufas', False))
+    baker = CHECKBOX_MAPPING.get(request.GET.get('baker', False))
     sateng = CHECKBOX_MAPPING.get(request.GET.get('sateng', False))
-    tagel = CHECKBOX_MAPPING.get(request.GET.get('tagel', False))
-    nyeri = CHECKBOX_MAPPING.get(request.GET.get('nyeri', False))
-    hiter = CHECKBOX_MAPPING.get(request.GET.get('hiter', False))
-    pilek = CHECKBOX_MAPPING.get(request.GET.get('pilek', False))
-    diare = CHECKBOX_MAPPING.get(request.GET.get('diare', False))
-    timeng = CHECKBOX_MAPPING.get(request.GET.get('timeng', False))
+    hipertensi = CHECKBOX_MAPPING.get(request.GET.get('hipertensi', False))
+    lelah = CHECKBOX_MAPPING.get(request.GET.get('lelah', False))
+    jjln = CHECKBOX_MAPPING.get(request.GET.get('jjln', False))
+    contact = CHECKBOX_MAPPING.get(request.GET.get('contact', False))
+    kumpul = CHECKBOX_MAPPING.get(request.GET.get('kumpul', False))
+    public = CHECKBOX_MAPPING.get(request.GET.get('public', False))
+    keluarga = CHECKBOX_MAPPING.get(request.GET.get('keluarga', False))
 
-    result = getPredict(demam, kecapean, batuk, sufas, sateng, tagel, nyeri, hiter, pilek, diare, timeng)
+    result = getPredict(susahnafas, demam, baker, sateng, hipertensi, lelah, jjln, contact, kumpul, public, keluarga)
     
     return render(request, 'result.html', {"result":result})
