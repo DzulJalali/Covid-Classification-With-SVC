@@ -9,6 +9,7 @@
 
 body {
   background: #585c68;
+  /* background: #fff; */
 }
 
 .wrapper {
@@ -52,66 +53,74 @@ body {
   background: #fff;
   /* border-radius: 5px; */
   text-align: center;
-  padding: 58px 40px;
+  /* padding: 58px 35px; */
   cursor: pointer;
   color: #585c68;
-  display: block;
+  /* display: block; */
   border: 5px solid transparent;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-.option_item .option_inner .icon {
+/* .option_item .option_inner .icon {
   margin-bottom: 10px;
 }
-.option_item .option_inner .icon .fas {
-    font-size: 32px;
-  }
-  
 
-.option_item .option_inner .icon .fab {
+.option_item .option_inner .icon .fas {
   font-size: 32px;
 }
 
+
+.option_item .option_inner .icon .fab {
+  font-size: 32px;
+} */
+
 .option_item .option_inner .name {
   user-select: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-.option_item .checkbox:checked ~ .option_inner.facebook {
+.option_item .checkbox:checked~.option_inner.facebook {
   border-color: #3b5999;
   color: #3b5999;
 }
 
-.option_item .checkbox:checked ~ .option_inner.twitter {
+.option_item .checkbox:checked~.option_inner.twitter {
   border-color: #55acee;
   color: #55acee;
 }
 
-.option_item .checkbox:checked ~ .option_inner.instagram {
+.option_item .checkbox:checked~.option_inner.instagram {
   border-color: #e4405f;
   color: #e4405f;
 }
 
-.option_item .checkbox:checked ~ .option_inner.linkedin {
+.option_item .checkbox:checked~.option_inner.linkedin {
   border-color: #0077b5;
   color: #0077b5;
 }
 
-.option_item .checkbox:checked ~ .option_inner.whatsapp {
+.option_item .checkbox:checked~.option_inner.whatsapp {
   border-color: #25d366;
   color: #25d366;
 }
 
-.option_item .checkbox:checked ~ .option_inner.google {
+.option_item .checkbox:checked~.option_inner.google {
   border-color: #dd4b39;
   color: #dd4b39;
 }
 
-.option_item .checkbox:checked ~ .option_inner.reddit {
+.option_item .checkbox:checked~.option_inner.reddit {
   border-color: #ff5700;
   color: #ff5700;
 }
 
-.option_item .checkbox:checked ~ .option_inner.quora {
+.option_item .checkbox:checked~.option_inner.quora {
   border-color: #b92b27;
   color: #b92b27;
 }
@@ -137,7 +146,7 @@ body {
   transform: rotate(-45deg);
 }
 
-.option_item .checkbox:checked ~ .option_inner .tickmark {
+.option_item .checkbox:checked~.option_inner .tickmark {
   display: block;
 }
 
@@ -214,14 +223,12 @@ body {
   right: 0;
 }
 
-.submit:hover
-{
-    background: #3b5999;
-    color: #fff;
+.submit:hover {
+  background: #3b5999;
+  color: #fff;
 }
 
-.btn
-{
+.btn {
   justify-content: right;
   align-items: center;
 }
