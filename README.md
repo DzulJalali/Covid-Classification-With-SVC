@@ -12,3 +12,5 @@ Halaman Anda Covid
 
 Halaman Anda Tidak Covid
 ![tdk covid](https://user-images.githubusercontent.com/57554388/186091434-592c203e-fbc5-46d7-a858-420e44d082e6.png)
+
+https://www.kaggle.com/code/dzuljalali/covid-19-classification-using-svm-svc
